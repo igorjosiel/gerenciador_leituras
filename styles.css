@@ -1,0 +1,25 @@
+:root {
+  --white: #ffffff;
+
+  --gray-100: #f3f3f5;
+  --gray-200: #e1e1e6;
+  --gray-300: #d1d5dc;
+  --gray-400: #717182;
+  --gray-500: #0a0a0a;
+  --overlay: rgba(0, 0, 0, 0.5);
+
+  --navy-dark: #211f42;
+  --navy-low: #030213;
+
+  --yellow-base: #894b00;
+  --yellow-bright: #fdc700;
+  --yellow-light: #fef9c2;
+
+  --red-bright: #d4183d;
+
+  --green-base: #016630;
+  --green-light: #dcfce7;
+
+  --blue-base: #193cb8;
+  --blue-light: #dbeafe;
+}
