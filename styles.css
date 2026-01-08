@@ -25,6 +25,8 @@
 
   --blue-base: #193cb8;
   --blue-light: #dbeafe;
+
+  --border-radius: 0.5rem;
 }
 
 html {

@@ -1,12 +1,12 @@
-header,
-header > div {
+header > div,
+.container-logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header > div {
-    column-gap: 0.75rem;
+.container-logo {
+  column-gap: 0.75rem;
 }
 
 header h1 {
@@ -14,4 +14,39 @@ header h1 {
   font-weight: 400;
   line-height: 1.5rem;
   color: var(--gray-500);
+}
+
+.cards-header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cards-header > .card {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-200);
+  height: 5.625rem;
+}
+
+.cards-header .quantity {
+  color: var(--gray-500);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.cards-header .description {
+  color: var(--gray-400);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+/* Tablet e Desktop */
+@media (min-width: 768px) {
+  .cards-header {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
