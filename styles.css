@@ -1,3 +1,6 @@
+@import "./components/header.css";
+@import "./components/button.css";
+
 :root {
   --white: #ffffff;
 
@@ -24,6 +27,11 @@
   --blue-light: #dbeafe;
 }
 
+html {
+  height: 100%;
+  width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -32,4 +40,14 @@
 
 body {
   font-family: Inter, sans-serif;
+  margin: 2rem 1rem 0;
+}
+
+/* Tablet e Desktop */
+@media (min-width: 768px) {
+  body {
+    width: 90%;
+    max-width: 75rem;
+    margin: 2rem auto 0;
+  }
 }
