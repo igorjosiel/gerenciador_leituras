@@ -1,0 +1,24 @@
+.badge {
+  border-radius: var(--border-radius);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+
+.default {
+  background-color: var(--blue-light);
+  color: var(--blue-base);
+}
+
+.in-progress {
+  background-color: var(--yellow-light);
+  color: var(--yellow-base);
+}
+
+.done {
+  background-color: var(--green-light);
+  color: var(--green-base);
+}

@@ -2,6 +2,7 @@
 @import "./components/button.css";
 @import "./components/search-form.css";
 @import "./components/cards.css";
+@import "./components/badge.css";
 
 :root {
   --white: #ffffff;
