@@ -23,8 +23,43 @@ button .icon {
   height: 24px;
 }
 
+.books-actions {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.books-actions button {
+  flex: 1;
+}
+
 button.primary {
   background-color: var(--navy-low);
   color: var(--white);
   border: none;
+}
+
+button.primary:hover {
+  background-color: var(--navy-dark);
+}
+
+button.secondary {
+  background-color: var(--white);
+  color: var(--gray-500);
+  border: 1px solid var(--gray-200);
+}
+
+button.secondary:hover {
+  background-color: var(--gray-100);
+}
+
+button.danger {
+  background-color: var(--white);
+  color: var(--red-bright);
+  border: 1px solid var(--gray-200);
+}
+
+button.danger:hover {
+  background-color: var(--gray-100);
 }
