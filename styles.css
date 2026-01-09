@@ -1,6 +1,7 @@
 @import "./components/header.css";
 @import "./components/button.css";
 @import "./components/search-form.css";
+@import "./components/cards.css";
 
 :root {
   --white: #ffffff;
@@ -50,7 +51,7 @@ body {
 @media (min-width: 768px) {
   body {
     width: 90%;
-    max-width: 75rem;
+    max-width: 78.125rem;
     margin: 2rem auto 0;
   }
 }

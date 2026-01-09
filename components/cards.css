@@ -1,0 +1,41 @@
+.bookshelf {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.563rem;
+  margin-top: 1.5rem;
+}
+
+article.card-book {
+  width: 100%;
+  max-width: 21.25rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-200);
+}
+
+article .books-data {
+  padding: 1rem;
+}
+
+article .books-data img {
+  width: 100%;
+  max-height: 25.313rem;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+/* Tablet e Desktop */
+@media screen and (min-width: 768px) {
+  .bookshelf {
+    justify-content: flex-start;
+  }
+
+  article.card-book {
+    width: 14.375rem;
+  }
+
+  article .books-data img {
+    max-height: 16.25rem;
+  }
+}

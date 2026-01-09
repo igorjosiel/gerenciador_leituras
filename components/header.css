@@ -45,7 +45,7 @@ header h1 {
 }
 
 /* Tablet e Desktop */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .cards-header {
     grid-template-columns: repeat(4, 1fr);
   }
