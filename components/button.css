@@ -24,6 +24,7 @@ button .icon {
 }
 
 .books-actions {
+  height: 3.25rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: row;

@@ -8,6 +8,8 @@
 }
 
 article.card-book {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 21.25rem;
   border-radius: var(--border-radius);
@@ -16,6 +18,7 @@ article.card-book {
 
 article .books-data {
   padding: 1rem;
+  flex: 1;
 }
 
 article .books-data img {
@@ -44,6 +47,19 @@ article .card-book-content p {
   color: var(--gray-400);
   font-weight: 400;
   margin-top: 0.125rem;
+}
+
+article .card-book-content .stars {
+  margin-top: 0.5rem;
+  color: var(--yellow-bright);
+  font-size: 1rem;
+}
+
+article .card-book-content .comment {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--gray-400);
 }
 
 /* Tablet e Desktop */
