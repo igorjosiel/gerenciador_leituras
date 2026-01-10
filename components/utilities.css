@@ -1,0 +1,14 @@
+/* spacings */
+.pt-72 {
+  padding-top: 4.5rem;
+}
+
+/* alignments */
+.text-center {
+  text-align: center;
+}
+
+/* width */
+.w-full {
+  width: 100%;
+}

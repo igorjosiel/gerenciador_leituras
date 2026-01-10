@@ -1,6 +1,6 @@
 const addBookButton = document.getElementById('add-book-button');
 const bookDialog = document.getElementById('book-dialog');
-const cancelButton = document.getElementById("cancel");
+const cancelButton = document.getElementById("cancel-button");
 
 addBookButton.addEventListener('click', () => {
   bookDialog.showModal();

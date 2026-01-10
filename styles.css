@@ -6,6 +6,7 @@
 @import "./components/dialog.css";
 @import "./components/typography.css";
 @import "./components/input.css";
+@import "./components/utilities.css";
 
 :root {
   --white: #ffffff;
