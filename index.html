@@ -12,6 +12,8 @@
     />
     <link rel="stylesheet" href="styles.css" />
 
+    <script src="./script.js" defer></script>
+
     <title>Gerenciador de Leitura</title>
   </head>
   <body>
@@ -22,10 +24,71 @@
           <h1>Minha Biblioteca</h1>
         </div>
 
-        <button class="primary">
+        <button class="primary" id="add-book-button">
           <img src="icons/white-plus.svg" alt="Ícone de adicionar livro" />
           Adicionar Livro
         </button>
+
+        <dialog id="book-dialog">
+          <header class="modal-header">
+            <h3 id="modal-title">Adicionar Livro</h3>
+            
+            <button aria-label="Fechar modal">
+              <img src="icons/close.svg" alt="Ícone de fechar modal" />
+            </button>
+          </header>
+
+          <div class="modal-body">
+            <form>
+              <div class="input-wrapper">
+                <label class="input-label">Título *</label>
+                <input class="input-field" type="text" placeholder="Digite o título do livro" required />
+              </div>
+
+              <div class="input-wrapper">
+                <label class="input-label">Autor *</label>
+                <input class="input-field" type="text" placeholder="Digite o nome do autor" required />
+              </div>
+
+              <div class="input-wrapper">
+                <label class="input-label">URL da Imagem</label>
+                <input class="input-field" type="text" placeholder="URL da capa do livro (opcional)" />
+              </div>
+
+              <div class="input-wrapper">
+                <label class="input-label">Status</label>
+                <select class="input-field" required>
+                  <option value="" disabled selected>Selecione o status</option>
+                  <option value="want-to-read">Quero ler</option>
+                  <option value="reading">Lendo</option>
+                  <option value="read">Lido</option>
+                </select>
+              </div>
+
+              <div class="input-wrapper">
+                <label class="input-label">Avaliação</label>
+                <select class="input-field">
+                  <option value="" disabled selected>Selecione a avaliação</option>
+                  <option value="1">1 estrela</option>
+                  <option value="2">2 estrelas</option>
+                  <option value="3">3 estrelas</option>
+                  <option value="4">4 estrelas</option>
+                  <option value="5">5 estrelas</option>
+                </select>
+              </div>
+
+              <div class="input-wrapper">
+                <label class="input-label">Comentário</label>
+                <textarea class="input-field" rows="4" placeholder="Suas anotações sobre o livro (opcional)"></textarea>
+              </div>
+
+              <div class="modal-action-buttons">
+                <button class="secondary" type="button">Cancelar</button>
+                <button class="primary" type="submit">Adicionar</button>
+              </div>
+            </form>
+          </div>
+        </dialog>
       </div>
 
       <div class="cards-header">

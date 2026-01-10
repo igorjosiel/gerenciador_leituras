@@ -3,6 +3,9 @@
 @import "./components/search-form.css";
 @import "./components/cards.css";
 @import "./components/badge.css";
+@import "./components/dialog.css";
+@import "./components/typography.css";
+@import "./components/input.css";
 
 :root {
   --white: #ffffff;
