@@ -3,6 +3,10 @@
   padding-top: 4.5rem;
 }
 
+.mb-16 {
+  margin-bottom: 1rem;
+}
+
 /* alignments */
 .text-center {
   text-align: center;

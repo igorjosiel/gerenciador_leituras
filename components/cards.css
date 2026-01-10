@@ -28,35 +28,10 @@ article .books-data img {
   border-radius: var(--border-radius);
 }
 
-article .card-book-content {
-  margin-top: 1rem;
-}
-
-article .card-book-content h2 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-article .card-book-content h2 {
-  color: var(--gray-500);
-  font-weight: 600;
-}
-
-article .card-book-content p {
-  margin-top: 0.125rem;
-}
-
-article .card-book-content .stars {
-  margin-top: 0.5rem;
+article .stars {
+  margin: 0.5rem 0;
   color: var(--yellow-bright);
   font-size: 1rem;
-}
-
-article .card-book-content .comment {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: var(--gray-400);
 }
 
 /* Tablet e Desktop */
