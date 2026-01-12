@@ -1,10 +1,13 @@
+import { addNewBook } from "./scrpts/booksManagement.js";
+import { getItem, BOOKS } from "./scrpts/localStorage.js";
+
 const main = document.querySelector("main");
 
 /* Ao carregar a página, verifica se há livros armazenados no localStorage. */
 document.addEventListener("DOMContentLoaded", () => {
-  const books = JSON.parse(localStorage.getItem("books")) || [];
+  const books = getItem(BOOKS);
 
-  if (books.length === 0) {
+  if (!books) {
     const messageContainer = document.createElement("div");
     messageContainer.className = "body-md pt-72";
     main.appendChild(messageContainer);
@@ -110,19 +113,7 @@ cancelButton.addEventListener("click", () => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const newBook = {
-    title: "O Hobbit",
-    author: "J.R.R. Tolkien",
-    image: "./icons/livro_1.png",
-    status: "Quero ler",
-    rating: 5,
-    comment: "Maravilhoso, abre a mente! Difícil parar de ler.",
-  };
-
-  let books = JSON.parse(localStorage.getItem("books")) || [];
-  books = [...books, newBook];
-  
-  localStorage.setItem("books", JSON.stringify(books));
+  addNewBook();
 
   window.location.reload();
 });
