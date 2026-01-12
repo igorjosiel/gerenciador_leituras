@@ -1,4 +1,4 @@
-import { deleteBook } from "./booksManagement.js";
+import { booksTotalCards, deleteBook } from "./booksManagement.js";
 import {
   createElement,
   createImageElement,
@@ -7,6 +7,7 @@ import {
 } from "./elements.js";
 import { getBadge, reloadPage } from "./utils.js";
 
+const header = document.querySelector("header");
 const main = document.querySelector("main");
 
 export function renderNoBooksMessage() {
@@ -18,6 +19,17 @@ export function renderNoBooksMessage() {
     "Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!",
     messageContainer
   );
+}
+
+export function renderCardsTotalBooks() {
+  const cardsHeader = createElement(TAGS.div, "cards-header", header);
+
+  booksTotalCards.forEach((card) => {
+    const cardElement = createElement(TAGS.div, "card", cardsHeader);
+
+    createTextElement(TAGS.p, "quantity", card.quantity, cardElement);
+    createTextElement(TAGS.p, "description", card.description, cardElement);
+  });
 }
 
 export function renderBookshelf(books) {

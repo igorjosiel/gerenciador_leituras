@@ -28,9 +28,35 @@ export function addNewBook(form) {
   setItem(BOOKS, books);
 }
 
+export function countBooksByStatus(status) {
+  const books = getItem(BOOKS);
+  const filteredBooks = books.filter((book) => book.status === status);
+
+  return filteredBooks.length;
+}
+
 export function deleteBook(bookId) {
   const books = getItem(BOOKS);
-  const filteredBooks = books.filter(book => book.id !== bookId);
+  const filteredBooks = books.filter((book) => book.id !== bookId);
 
   setItem(BOOKS, filteredBooks);
 }
+
+export const booksTotalCards = [
+  {
+    quantity: countItem(BOOKS),
+    description: "Total",
+  },
+  {
+    quantity: countBooksByStatus("quero ler"),
+    description: "Quero ler",
+  },
+  {
+    quantity: countBooksByStatus("lendo"),
+    description: "Lendo",
+  },
+  {
+    quantity: countBooksByStatus("lidos"),
+    description: "Lidos",
+  },
+];

@@ -1,5 +1,5 @@
 import { addNewBook } from "./scripts/booksManagement.js";
-import { renderNoBooksMessage, renderBookshelf } from "./scripts/componentsRendering.js";
+import { renderNoBooksMessage, renderBookshelf, renderCardsTotalBooks } from "./scripts/componentsRendering.js";
 import { getItem, BOOKS } from "./scripts/localStorage.js";
 import { reloadPage } from "./scripts/utils.js";
 
@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const books = getItem(BOOKS);
 
   if (books.length === 0) renderNoBooksMessage();
-  else renderBookshelf(books);
+  else {
+    renderCardsTotalBooks(books);
+    renderBookshelf(books);
+  }
 });
 
 const addBookButton = document.getElementById("add-book-button");
