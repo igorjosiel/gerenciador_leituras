@@ -1,80 +1,68 @@
 import { deleteBook } from "./booksManagement.js";
-import { createElement, createTextElement, TAGS } from "./elements.js";
+import {
+  createElement,
+  createImageElement,
+  createTextElement,
+  TAGS,
+} from "./elements.js";
 import { getBadge, reloadPage } from "./utils.js";
 
 const main = document.querySelector("main");
 
 export function renderNoBooksMessage() {
-  const messageContainer = createElement(TAGS.DIV, "body-md pt-72", main);
+  const messageContainer = createElement(TAGS.div, "body-md pt-72", main);
 
   createTextElement(
-    TAGS.P,
+    TAGS.p,
     "text-center w-full",
     "Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!",
     messageContainer
   );
 }
 
-export function renderBookshelf() {
-  const bookshelf = document.createElement("section");
-  bookshelf.className = "bookshelf";
-  main.appendChild(bookshelf);
+export function renderBookshelf(books) {
+  const bookshelf = createElement(TAGS.section, "bookshelf", main);
 
   books.forEach((book) => {
-    const cardBook = document.createElement("article");
-    cardBook.className = "card-book";
+    const cardBook = createElement(TAGS.article, "card-book", bookshelf);
+    const booksData = createElement(TAGS.div, "books-data", cardBook);
 
-    const booksData = document.createElement("div");
-    booksData.className = "books-data";
+    createImageElement(
+      "mb-16",
+      book.urlImage,
+      `Capa do livro ${book.title}`,
+      booksData
+    );
 
-    const bookImage = document.createElement("img");
-    bookImage.className = "mb-16";
-    bookImage.src = book.urlImage;
-    bookImage.alt = `Capa do livro ${book.title}`;
+    createTextElement(TAGS.h2, "heading-md", book.title, booksData);
+    createTextElement(TAGS.p, "body-md", book.author, booksData);
+    createTextElement(
+      TAGS.span,
+      `badge ${getBadge(book.status)}`,
+      book.status,
+      booksData
+    );
 
-    const bookTitle = document.createElement("h2");
-    bookTitle.className = "heading-md";
-    bookTitle.textContent = book.title;
-
-    const bookAuthor = document.createElement("p");
-    bookAuthor.className = "body-md";
-    bookAuthor.textContent = book.author;
-
-    const badge = document.createElement("span");
-    badge.className = `badge ${getBadge(book.status)}`;
-    badge.textContent = book.status;
-
-    const starsContainer = document.createElement("div");
+    /* const starsContainer = document.createElement("div");
     starsContainer.className = "stars";
     for (let i = 0; i < book.rating; i++) {
       const star = document.createElement("span");
       star.textContent = "★";
       starsContainer.appendChild(star);
+    }*/
+
+    if (book.comments) {
+      createTextElement(TAGS.p, "body-sm mt-8", book.comments, booksData);
     }
 
-    const comment = document.createElement("p");
-    comment.className = "body-sm";
-    comment.textContent = book.comment;
+    const booksActions = createElement(TAGS.div, "books-actions", cardBook);
 
-    const booksActions = document.createElement("div");
-    booksActions.className = "books-actions";
-
-    const editButtonIcon = document.createElement("img");
-    editButtonIcon.src = "icons/button-pen.svg";
-    editButtonIcon.alt = "Ícone de editar livro";
-
-    const editButton = document.createElement("button");
-    editButton.className = "secondary";
-    editButton.appendChild(editButtonIcon);
+    const editButton = createElement(TAGS.button, "secondary", booksActions);
+    createImageElement("", "icons/button-pen.svg", "Ícone de editar livro", editButton);
     editButton.innerHTML += "Editar";
 
-    const deleteButtonIcon = document.createElement("img");
-    deleteButtonIcon.src = "icons/red-trash.svg";
-    deleteButtonIcon.alt = "Ícone de excluir livro";
-
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "danger";
-    deleteButton.appendChild(deleteButtonIcon);
+    const deleteButton = createElement(TAGS.button, "danger", booksActions);
+    createImageElement("", "icons/red-trash.svg", "Ícone de excluir livro", deleteButton);
     deleteButton.innerHTML += "Excluir";
 
     deleteButton.addEventListener("click", () => {
@@ -86,19 +74,6 @@ export function renderBookshelf() {
       }
     });
 
-    booksActions.appendChild(editButton);
-    booksActions.appendChild(deleteButton);
-
-    booksData.appendChild(bookImage);
-    booksData.appendChild(bookTitle);
-    booksData.appendChild(bookAuthor);
-    booksData.appendChild(badge);
-    booksData.appendChild(starsContainer);
-    booksData.appendChild(comment);
-
-    cardBook.appendChild(booksData);
-    cardBook.appendChild(booksActions);
-
-    bookshelf.appendChild(cardBook);
+    /* booksData.appendChild(starsContainer);*/
   });
 }
