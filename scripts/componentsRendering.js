@@ -43,13 +43,15 @@ export function renderBookshelf(books) {
       booksData
     );
 
-    /* const starsContainer = document.createElement("div");
-    starsContainer.className = "stars";
-    for (let i = 0; i < book.rating; i++) {
-      const star = document.createElement("span");
-      star.textContent = "★";
-      starsContainer.appendChild(star);
-    }*/
+    const starsContainer = createElement(TAGS.div, "stars", booksData);
+
+    for (let i = 0; i < 5; i++) {
+      if (i < book.rating) {
+        createImageElement("", "icons/star_fill.svg", "", starsContainer);
+      } else {
+        createImageElement("", "icons/star.svg", "", starsContainer);
+      }
+    }
 
     if (book.comments) {
       createTextElement(TAGS.p, "body-sm mt-8", book.comments, booksData);
@@ -58,11 +60,21 @@ export function renderBookshelf(books) {
     const booksActions = createElement(TAGS.div, "books-actions", cardBook);
 
     const editButton = createElement(TAGS.button, "secondary", booksActions);
-    createImageElement("", "icons/button-pen.svg", "Ícone de editar livro", editButton);
+    createImageElement(
+      "",
+      "icons/button-pen.svg",
+      "Ícone de editar livro",
+      editButton
+    );
     editButton.innerHTML += "Editar";
 
     const deleteButton = createElement(TAGS.button, "danger", booksActions);
-    createImageElement("", "icons/red-trash.svg", "Ícone de excluir livro", deleteButton);
+    createImageElement(
+      "",
+      "icons/red-trash.svg",
+      "Ícone de excluir livro",
+      deleteButton
+    );
     deleteButton.innerHTML += "Excluir";
 
     deleteButton.addEventListener("click", () => {
@@ -73,7 +85,5 @@ export function renderBookshelf(books) {
         console.error(error.message);
       }
     });
-
-    /* booksData.appendChild(starsContainer);*/
   });
 }

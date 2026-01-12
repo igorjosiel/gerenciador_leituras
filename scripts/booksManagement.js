@@ -7,7 +7,7 @@ export function addNewBook(form) {
   const author = formData.get("author");
   const urlImage = formData.get("urlImage");
   const status = formData.get("status");
-  const stars = formData.get("stars");
+  const rating = formData.get("rating");
   const comments = formData.get("comments");
 
   validateRequiredFields(form);
@@ -18,7 +18,7 @@ export function addNewBook(form) {
     author,
     urlImage,
     status,
-    stars,
+    rating,
     comments,
   };
 

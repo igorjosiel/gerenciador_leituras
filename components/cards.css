@@ -29,9 +29,15 @@ article .books-data img {
 }
 
 article .stars {
+  display: flex;
+  gap: 0.25rem;
   margin: 0.5rem 0;
-  color: var(--yellow-bright);
   font-size: 1rem;
+}
+
+article .stars img {
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Tablet e Desktop */
