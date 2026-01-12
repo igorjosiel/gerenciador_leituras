@@ -102,13 +102,20 @@ const addBookButton = document.getElementById("add-book-button");
 const addBookButtonModal = document.getElementById("add-book-button-modal");
 const form = document.getElementById("book-form");
 const bookDialog = document.getElementById("book-dialog");
-const cancelButton = document.getElementById("cancel-button");
+const closeModalButton = document.getElementById("close-modal-button");
+const cancelModalButton = document.getElementById("cancel-modal-button");
 
 addBookButton.addEventListener("click", () => {
   bookDialog.showModal();
 });
 
-cancelButton.addEventListener("click", () => {
+closeModalButton.addEventListener("click", () => {
+  form.reset();
+  bookDialog.close();
+});
+
+cancelModalButton.addEventListener("click", () => {
+  form.reset();
   bookDialog.close();
 });
 
