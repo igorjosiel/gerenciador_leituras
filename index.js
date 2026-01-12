@@ -1,6 +1,6 @@
-import { addNewBook } from "./scripts/booksManagement.js";
-import { getItem, BOOKS, countItem } from "./scripts/localStorage.js";
-import { getBadge, reloadPage, validateRequiredFields } from "./scripts/utils.js";
+import { addNewBook, deleteBook } from "./scripts/booksManagement.js";
+import { getItem, BOOKS } from "./scripts/localStorage.js";
+import { getBadge, reloadPage } from "./scripts/utils.js";
 
 const main = document.querySelector("main");
 
@@ -82,7 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteButton.innerHTML += "Excluir";
 
       deleteButton.addEventListener("click", () => {
-        console.log("Teste: ", book);
+        try {
+          deleteBook(book.id);
+          reloadPage();
+        } catch(error) {
+
+        }
       });
 
       booksActions.appendChild(editButton);
@@ -128,29 +133,9 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   try {
-    const formData = new FormData(form);
-    const title = formData.get("title");
-    const author = formData.get("author");
-    const urlImage = formData.get("urlImage");
-    const status = formData.get("status");
-    const stars = formData.get("stars");
-    const comments = formData.get("comments");
-
-    validateRequiredFields(form);
-
-    const newBook = {
-      id: countItem(BOOKS) + 1,
-      title,
-      author,
-      urlImage,
-      status,
-      stars,
-      comments,
-    };
-
-    addNewBook(newBook);
+    addNewBook(form);
     reloadPage();
   } catch (error) {
-    /* showErrorMessage(error.message); */
+    console.error(error.message);
   }
 });
