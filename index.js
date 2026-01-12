@@ -1,5 +1,5 @@
 import { addNewBook } from "./scripts/booksManagement.js";
-import { getItem, BOOKS } from "./scripts/localStorage.js";
+import { getItem, BOOKS, countItem } from "./scripts/localStorage.js";
 import { getBadge, reloadPage, validateRequiredFields } from "./scripts/utils.js";
 
 const main = document.querySelector("main");
@@ -81,6 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteButton.appendChild(deleteButtonIcon);
       deleteButton.innerHTML += "Excluir";
 
+      deleteButton.addEventListener("click", () => {
+        console.log("Teste: ", book);
+      });
+
       booksActions.appendChild(editButton);
       booksActions.appendChild(deleteButton);
 
@@ -93,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cardBook.appendChild(booksData);
       cardBook.appendChild(booksActions);
+
       bookshelf.appendChild(cardBook);
     });
   }
@@ -134,6 +139,7 @@ form.addEventListener("submit", (event) => {
     validateRequiredFields(form);
 
     const newBook = {
+      id: countItem(BOOKS) + 1,
       title,
       author,
       urlImage,

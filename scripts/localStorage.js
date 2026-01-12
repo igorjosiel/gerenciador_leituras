@@ -12,3 +12,7 @@ export function getItem(key) {
 export function removeItem(key) {
   localStorage.removeItem(key);
 }
+
+export function countItem(key) {
+  return getItem(key).length;
+}

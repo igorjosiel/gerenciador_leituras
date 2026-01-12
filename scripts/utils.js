@@ -48,10 +48,10 @@ export function getBadge(status) {
 
   switch (status) {
     case "lido":
-      badge += "done";
+      badge = "done";
       break;
     case "lendo":
-      badge += "in-progress";
+      badge = "in-progress";
       break;
     default:
       badge = "default";
