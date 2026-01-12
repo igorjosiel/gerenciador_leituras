@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
 
-    <script type="module" src="./script.js" defer></script>
+    <script type="module" src="./index.js" defer></script>
 
     <title>Gerenciador de Leitura</title>
   </head>
@@ -32,7 +32,7 @@
         <dialog id="book-dialog">
           <header class="modal-header">
             <h3 id="modal-title">Adicionar Livro</h3>
-            
+
             <button aria-label="Fechar modal">
               <img src="icons/close.svg" alt="Ícone de fechar modal" />
             </button>
@@ -42,33 +42,52 @@
             <form id="book-form">
               <div class="input-wrapper">
                 <label class="input-label">Título *</label>
-                <input class="input-field" type="text" placeholder="Digite o título do livro" required />
+                <input
+                  type="text"
+                  name="title"
+                  class="input-field"
+                  placeholder="Digite o título do livro"
+                  required
+                />
               </div>
 
               <div class="input-wrapper">
                 <label class="input-label">Autor *</label>
-                <input class="input-field" type="text" placeholder="Digite o nome do autor" required />
+                <input
+                  type="text"
+                  name="author"
+                  class="input-field"
+                  placeholder="Digite o nome do autor"
+                  required
+                />
               </div>
 
               <div class="input-wrapper">
                 <label class="input-label">URL da Imagem</label>
-                <input class="input-field" type="text" placeholder="URL da capa do livro (opcional)" />
+                <input
+                  type="text"
+                  name="urlImage"
+                  class="input-field"
+                  placeholder="URL da capa do livro (opcional)"
+                />
               </div>
 
               <div class="input-wrapper">
                 <label class="input-label">Status</label>
-                <select class="input-field" required>
+                <select name="status" class="input-field" required>
                   <option value="" disabled selected>Selecione o status</option>
-                  <option value="want-to-read">Quero ler</option>
-                  <option value="reading">Lendo</option>
-                  <option value="read">Lido</option>
+                  <option value="quero ler">Quero ler</option>
+                  <option value="lendo">Lendo</option>
+                  <option value="lido">Lido</option>
                 </select>
               </div>
 
               <div class="input-wrapper">
                 <label class="input-label">Avaliação</label>
-                <select class="input-field">
-                  <option value="" disabled selected>Selecione a avaliação</option>
+                <select name="stars" class="input-field">
+                  <option value="" disabled selected>
+                    Selecione a avaliação
+                  </option>
                   <option value="1">1 estrela</option>
                   <option value="2">2 estrelas</option>
                   <option value="3">3 estrelas</option>
@@ -79,12 +98,25 @@
 
               <div class="input-wrapper">
                 <label class="input-label">Comentário</label>
-                <textarea class="input-field" rows="4" placeholder="Suas anotações sobre o livro (opcional)"></textarea>
+                <textarea
+                  name="comments"
+                  class="input-field"
+                  rows="4"
+                  placeholder="Suas anotações sobre o livro (opcional)"
+                ></textarea>
               </div>
 
               <div class="modal-action-buttons">
-                <button class="secondary" type="button" id="cancel-button">Cancelar</button>
-                <button class="primary" type="submit" id="add-book-button-modal">Adicionar</button>
+                <button class="secondary" type="button" id="cancel-button">
+                  Cancelar
+                </button>
+                <button
+                  class="primary"
+                  type="submit"
+                  id="add-book-button-modal"
+                >
+                  Adicionar
+                </button>
               </div>
             </form>
           </div>
