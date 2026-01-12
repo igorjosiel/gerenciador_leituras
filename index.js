@@ -1,5 +1,5 @@
 import { addNewBook, deleteBook } from "./scripts/booksManagement.js";
-import { createElement, TAG } from "./scripts/elements.js";
+import { createElement, createTextElement, TAGS } from "./scripts/elements.js";
 import { getItem, BOOKS } from "./scripts/localStorage.js";
 import { getBadge, reloadPage } from "./scripts/utils.js";
 
@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const books = getItem(BOOKS);
 
   if (books.length === 0) {
-    const messageContainer = createElement(TAG.DIV, "body-md pt-72", main);
-
-    const message = document.createElement("p");
-    message.className = "text-center w-full";
-    message.textContent =
-      "Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!";
-
-    messageContainer.appendChild(message);
+    const messageContainer = createElement(TAGS.DIV, "body-md pt-72", main);
+    
+    createTextElement(
+      TAGS.P,
+      "text-center w-full",
+      "Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!",
+      messageContainer
+    );
   } else {
     const bookshelf = document.createElement("section");
     bookshelf.className = "bookshelf";
