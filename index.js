@@ -1,4 +1,5 @@
 import { addNewBook, deleteBook } from "./scripts/booksManagement.js";
+import { createElement, TAG } from "./scripts/elements.js";
 import { getItem, BOOKS } from "./scripts/localStorage.js";
 import { getBadge, reloadPage } from "./scripts/utils.js";
 
@@ -9,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const books = getItem(BOOKS);
 
   if (books.length === 0) {
-    const messageContainer = document.createElement("div");
-    messageContainer.className = "body-md pt-72";
-    main.appendChild(messageContainer);
+    const messageContainer = createElement(TAG.DIV, "body-md pt-72", main);
 
     const message = document.createElement("p");
     message.className = "text-center w-full";
@@ -85,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           deleteBook(book.id);
           reloadPage();
-        } catch(error) {
-
+        } catch (error) {
+          console.error(error.message);
         }
       });
 
@@ -109,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const addBookButton = document.getElementById("add-book-button");
-const addBookButtonModal = document.getElementById("add-book-button-modal");
 const form = document.getElementById("book-form");
 const bookDialog = document.getElementById("book-dialog");
 const closeModalButton = document.getElementById("close-modal-button");
