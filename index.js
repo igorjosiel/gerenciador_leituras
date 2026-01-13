@@ -25,7 +25,30 @@ const bookDialog = document.getElementById("book-dialog");
 const closeModalButton = document.getElementById("close-modal-button");
 const cancelModalButton = document.getElementById("cancel-modal-button");
 
+const filterByTitleAuthorInput = document.getElementById(
+  "filter-by-title-author"
+);
 const filterByStatusInput = document.getElementById("filter-by-status");
+
+filterByTitleAuthorInput.addEventListener("blur", () => {
+  const value = filterByTitleAuthorInput.value.toUpperCase();
+
+  if (value) {
+    const filteredBooks = books.filter((book) => {
+      const title = book.title.toUpperCase();
+      const author = book.author.toUpperCase();
+
+      return title.includes(value) || author.includes(value);
+    });
+
+    // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
+    removeElement("section.bookshelf");
+    renderBookshelf(filteredBooks);
+  } else {
+    removeElement("section.bookshelf");
+    renderBookshelf(books);
+  }
+});
 
 filterByStatusInput.addEventListener("change", () => {
   const value = filterByStatusInput.value;
