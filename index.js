@@ -1,12 +1,17 @@
 import { addNewBook } from "./scripts/booksManagement.js";
-import { renderNoBooksMessage, renderBookshelf, renderCardsTotalBooks } from "./scripts/componentsRendering.js";
+import {
+  renderNoBooksMessage,
+  renderBookshelf,
+  renderCardsTotalBooks,
+} from "./scripts/componentsRendering.js";
+import { removeElement } from "./scripts/elements.js";
 import { getItem, BOOKS } from "./scripts/localStorage.js";
 import { reloadPage } from "./scripts/utils.js";
 
+const books = getItem(BOOKS);
+
 /* Ao carregar a página, verifica se há livros armazenados no localStorage. */
 document.addEventListener("DOMContentLoaded", () => {
-  const books = getItem(BOOKS);
-
   if (books.length === 0) renderNoBooksMessage();
   else {
     renderCardsTotalBooks(books);
@@ -19,6 +24,23 @@ const form = document.getElementById("book-form");
 const bookDialog = document.getElementById("book-dialog");
 const closeModalButton = document.getElementById("close-modal-button");
 const cancelModalButton = document.getElementById("cancel-modal-button");
+
+const filterByStatusInput = document.getElementById("filter-by-status");
+
+filterByStatusInput.addEventListener("change", () => {
+  const value = filterByStatusInput.value;
+
+  if (value) {
+    const filteredBooks = books.filter((book) => book.status === value);
+
+    // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
+    removeElement("section.bookshelf");
+    renderBookshelf(filteredBooks);
+  } else {
+    removeElement("section.bookshelf");
+    renderBookshelf(books);
+  }
+});
 
 addBookButton.addEventListener("click", () => {
   bookDialog.showModal();

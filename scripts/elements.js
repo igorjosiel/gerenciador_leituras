@@ -34,3 +34,8 @@ export function createImageElement(className, src, alt, parentElement) {
 
   return element;
 }
+
+export function removeElement(querySelector) {
+  const element = document.querySelector(querySelector);
+  element.remove();
+}
