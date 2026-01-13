@@ -55,13 +55,15 @@ export function renderBookshelf(books) {
       booksData
     );
 
-    const starsContainer = createElement(TAGS.div, "stars", booksData);
+    if (book.rating) {
+      const starsContainer = createElement(TAGS.div, "stars", booksData);
 
-    for (let i = 0; i < 5; i++) {
-      if (i < book.rating) {
-        createImageElement("", "icons/star_fill.svg", "", starsContainer);
-      } else {
-        createImageElement("", "icons/star.svg", "", starsContainer);
+      for (let i = 0; i < 5; i++) {
+        if (i < book.rating) {
+          createImageElement("", "icons/star_fill.svg", "", starsContainer);
+        } else {
+          createImageElement("", "icons/star.svg", "", starsContainer);
+        }
       }
     }
 
@@ -70,7 +72,6 @@ export function renderBookshelf(books) {
     }
 
     const booksActions = createElement(TAGS.div, "books-actions", cardBook);
-
     const editButton = createElement(TAGS.button, "secondary", booksActions);
     createImageElement(
       "",

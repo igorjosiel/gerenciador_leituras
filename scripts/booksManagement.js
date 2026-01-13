@@ -56,7 +56,7 @@ export const booksTotalCards = [
     description: "Lendo",
   },
   {
-    quantity: countBooksByStatus("lidos"),
+    quantity: countBooksByStatus("lido"),
     description: "Lidos",
   },
 ];
