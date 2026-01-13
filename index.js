@@ -6,7 +6,7 @@ import {
 } from "./scripts/componentsRendering.js";
 import { removeElement } from "./scripts/elements.js";
 import { getItem, BOOKS } from "./scripts/localStorage.js";
-import { reloadPage } from "./scripts/utils.js";
+import { reloadPage, showSuccessMessage } from "./scripts/utils.js";
 
 const books = getItem(BOOKS);
 
@@ -31,37 +31,41 @@ const filterByTitleAuthorInput = document.getElementById(
 const filterByStatusInput = document.getElementById("filter-by-status");
 
 filterByTitleAuthorInput.addEventListener("blur", () => {
-  const value = filterByTitleAuthorInput.value.toUpperCase();
+  if (books.length !== 0) {
+    const value = filterByTitleAuthorInput.value.toUpperCase();
 
-  if (value) {
-    const filteredBooks = books.filter((book) => {
-      const title = book.title.toUpperCase();
-      const author = book.author.toUpperCase();
+    if (value) {
+      const filteredBooks = books.filter((book) => {
+        const title = book.title.toUpperCase();
+        const author = book.author.toUpperCase();
 
-      return title.includes(value) || author.includes(value);
-    });
+        return title.includes(value) || author.includes(value);
+      });
 
-    // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
-    removeElement("section.bookshelf");
-    renderBookshelf(filteredBooks);
-  } else {
-    removeElement("section.bookshelf");
-    renderBookshelf(books);
+      // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
+      removeElement("section.bookshelf");
+      renderBookshelf(filteredBooks);
+    } else {
+      removeElement("section.bookshelf");
+      renderBookshelf(books);
+    }
   }
 });
 
 filterByStatusInput.addEventListener("change", () => {
-  const value = filterByStatusInput.value;
+  if (books.length !== 0) {
+    const value = filterByStatusInput.value;
 
-  if (value) {
-    const filteredBooks = books.filter((book) => book.status === value);
+    if (value) {
+      const filteredBooks = books.filter((book) => book.status === value);
 
-    // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
-    removeElement("section.bookshelf");
-    renderBookshelf(filteredBooks);
-  } else {
-    removeElement("section.bookshelf");
-    renderBookshelf(books);
+      // É preciso primeiro remover o elemento para depois renderizar novamente os novos itens para não duplicadar
+      removeElement("section.bookshelf");
+      renderBookshelf(filteredBooks);
+    } else {
+      removeElement("section.bookshelf");
+      renderBookshelf(books);
+    }
   }
 });
 
@@ -84,7 +88,12 @@ form.addEventListener("submit", (event) => {
 
   try {
     addNewBook(form);
-    reloadPage();
+    bookDialog.close();
+    showSuccessMessage("Livro adicionado com sucesso!");
+
+    setTimeout(() => {
+      reloadPage();
+    }, [3000]);
   } catch (error) {
     console.error(error.message);
   }

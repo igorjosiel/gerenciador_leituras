@@ -59,3 +59,23 @@ export function getBadge(status) {
 
   return badge;
 }
+
+export function showSuccessMessage(message, duration = 3000) {
+  const toast = document.getElementById("toast-success");
+
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+
+  // força o repaint para animação funcionar
+  requestAnimationFrame(() => {
+    toast.classList.add("show");
+  });
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+
+    setTimeout(() => {
+      toast.classList.add("hidden");
+    }, 500);
+  }, duration);
+}

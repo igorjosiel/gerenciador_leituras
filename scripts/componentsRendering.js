@@ -5,7 +5,7 @@ import {
   createTextElement,
   TAGS,
 } from "./elements.js";
-import { getBadge, reloadPage } from "./utils.js";
+import { getBadge, reloadPage, showSuccessMessage } from "./utils.js";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -92,7 +92,11 @@ export function renderBookshelf(books) {
     deleteButton.addEventListener("click", () => {
       try {
         deleteBook(book.id);
-        reloadPage();
+        showSuccessMessage("Livro removido com sucesso!");
+
+        setTimeout(() => {
+          reloadPage();
+        }, [3000]);
       } catch (error) {
         console.error(error.message);
       }
